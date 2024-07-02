@@ -82,3 +82,9 @@ production:
   database: melohh_production
   username: melohh
   password: <%= ENV["MELOHH_DATABASE_PASSWORD"] %>
+
+staging:
+  <<: *default
+  database: melohh_staging
+  username: melohh
+  password: <%= ENV["MELOHH_DATABASE_PASSWORD"] %>
