@@ -16,6 +16,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 group :development, :test do
+  gem "rspec-rails"
   gem "debug", platforms: %i[ mri windows ]
 end
 
