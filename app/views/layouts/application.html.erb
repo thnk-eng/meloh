@@ -1,20 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="h-full" lang="en">
   <head>
-    <title><%= content_for?(:title) ? strip_tags(yield(:title)) : "Melohh" %></title>
-    <meta name="apple-mobile-web-app-title" content="Melohh">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= content_for(:title) || "Meloh" %></title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+
+    <meta name="viewport"
+          content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Maybe">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <%= yield :head %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body class="h-full">
+    <div id="notification-tray" class="fixed z-50 space-y-1 top-6 right-10"></div>
+    <%= safe_join(flash.map { |type, message| notification(message, type: type) }) %>
+
+    <%= content_for?(:content) ? yield(:content) : yield %>
+
+    <%= turbo_frame_tag "modal" %>
+    <%= turbo_frame_tag "drawer" %>
+
+    <%= render "shared/confirm_modal" %>
+
+    <% if self_hosted? %>
+    <%= render "shared/app_version" %>
+    <% end %>
   </body>
+
 </html>

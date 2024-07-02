@@ -1,38 +1,73 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-ruby file: ".ruby-version"
+ruby file: '.ruby-version'
 
-gem "rack-canonical-host"
-gem "rails", "~> 7.1.3", ">= 7.1.3.4"
-gem "propshaft"
-gem "pg", "~> 1.1"
-gem "puma", ">= 5.0"
-gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "tailwindcss-rails"
-gem "jbuilder"
-gem "redis", ">= 4.0.1"
-gem "tzinfo-data", platforms: %i[ windows jruby ]
-gem "bootsnap", require: false
+# Rails
+gem 'rails', github: 'rails/rails', branch: '7-2-stable'
+
+# Drivers
+gem 'pg', '~> 1.5'
+
+# Deployment
+gem 'bootsnap', require: false
+gem 'puma', '>= 5.0'
+
+# Assets
+gem 'importmap-rails'
+gem 'lucide-rails', github: 'maybe-finance/lucide-rails'
+gem 'propshaft'
+gem 'tailwindcss-rails'
+
+# Hotwire
+gem 'stimulus-rails'
+gem 'turbo-rails'
+
+# Background Jobs
+gem 'good_job'
+
+# Error logging
+gem 'sentry-rails'
+gem 'sentry-ruby'
+gem 'stackprof'
+
+# Active Storage
+gem 'aws-sdk-s3', require: false
+gem 'image_processing', '>= 1.2'
+
+# Other
+gem 'bcrypt', '~> 3.1'
+gem 'csv'
+gem 'faraday'
+gem 'faraday-retry'
+gem 'inline_svg'
+gem 'octokit'
+gem 'pagy'
+gem 'rails-settings-cached'
+gem 'tzinfo-data', platforms: %i[ windows jruby ]
+gem 'faraday-multipart'
 
 group :development, :test do
-  gem "factory_bot_rails"
-  gem "dotenv", ">= 3.0"
-  gem "rspec-rails"
-  gem "debug", platforms: %i[ mri windows ]
+  gem 'brakeman', require: false
+  gem 'debug', platforms: %i[ mri windows ]
+  gem 'erb_lint'
+  gem 'i18n-tasks'
+  gem 'rubocop-rails-omakase', require: false
 end
 
 group :development do
-  gem "letter_opener"
-  gem "brakeman", require: false
-  gem "annotate"
-  gem "web-console"
+  gem 'dotenv-rails'
+  gem 'hotwire-livereload'
+  gem 'letter_opener'
+  gem 'ruby-lsp-rails'
+  gem 'web-console'
 end
 
 group :test do
-  gem "webmock"
-  gem "vcr"
-  gem "selenium-webdriver", require: false
-  gem "capybara", require: false
+  gem 'capybara'
+  gem 'climate_control'
+  gem 'mocha'
+  gem 'selenium-webdriver'
+  gem 'simplecov', require: false
+  gem 'vcr'
+  gem 'webmock'
 end

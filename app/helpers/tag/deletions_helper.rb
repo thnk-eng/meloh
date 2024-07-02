@@ -1,0 +1,2 @@
+module Tag::DeletionsHelper
+end

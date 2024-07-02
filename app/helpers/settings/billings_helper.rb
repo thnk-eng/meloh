@@ -1,0 +1,2 @@
+module Settings::BillingsHelper
+end
