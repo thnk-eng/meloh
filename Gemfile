@@ -31,6 +31,8 @@ group :development do
 end
 
 group :test do
+  gem "webmock"
+  gem "vcr"
   gem "selenium-webdriver", require: false
   gem "capybara", require: false
 end
