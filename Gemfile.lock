@@ -505,7 +505,7 @@ DEPENDENCIES
   pagy
   pg (~> 1.5)
   propshaft
-  puma (>= 5.0)
+  puma (>= 6.0)
   rails!
   rails-settings-cached
   rubocop-rails-omakase

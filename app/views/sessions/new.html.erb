@@ -1,0 +1,17 @@
+<%
+  header_title :title
+%>
+
+<%= form_with url: session_path do |form| %>
+  <%= auth_messages form %>
+
+  <%= form.email_field :email, label: true, autofocus: false, autocomplete: "email", required: "required", placeholder: "email" %>
+
+  <%= form.password_field :password, label: true, required: "required" %>
+
+  <%= form.submit :submit %>
+<% end %>
+
+<div class="mt-6 text-center">
+  <p class="text-sm text-gray-600"><%= t(".forgot_password") %> <%= link_to  new_password_reset_path, class: "font-medium text-gray-600 hover:text-gray-400 transition" %></p>
+</div>

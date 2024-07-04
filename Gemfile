@@ -10,7 +10,7 @@ gem 'pg', '~> 1.5'
 
 # Deployment
 gem 'bootsnap', require: false
-gem 'puma', '>= 5.0'
+gem 'puma', '>= 6.0'
 
 # Assets
 gem 'importmap-rails'
